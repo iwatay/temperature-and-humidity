@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="static/Chart.min.js"></script>
+    <script>
+      var labels = [
+        {% for weather in weathers %}
+          "{{ weather.date.strftime('%Y/%m/%d %H:%M') }}",
+        {% endfor %}
+      ]
+      var temperatureData = [ 
+        {% for weather in weathers %}
+           {{ weather.temperature }},
+        {% endfor %}
+      ]
+      var humidityData = [ 
+        {% for weather in weathers %}
+          {{ weather.humidity }},
+        {% endfor %}
+      ]
+    </script>
+    <script src="static/lineChart.js"></script>
+  </head>
+  <body>
+    <canvas id="graph_area" height="500" width="1000"></canvas>
+    <ul id="chart_legend"></ul>
+  </body>
+</html>
